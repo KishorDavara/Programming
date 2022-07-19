@@ -1,4 +1,4 @@
-package dynamicprogramming.cansum;
+package dynamicprogramming;
 
 //Write a program to identify that can we generate targetSum using the elements of Array
 public class CanSum {

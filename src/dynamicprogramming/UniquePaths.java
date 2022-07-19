@@ -1,4 +1,4 @@
-package dynamicprogramming.gridtraveller;
+package dynamicprogramming;
 
 // https://leetcode.com/problems/unique-paths/
 public class UniquePaths {
