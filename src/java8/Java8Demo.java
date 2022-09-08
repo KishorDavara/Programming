@@ -3,15 +3,16 @@ package java8;
 import java.util.*;
 import java.util.stream.Collectors;
 
-// Different Ways to Iterate Collections
-public class DifferentMethodToIterateCollection {
+
+public class Java8Demo {
     public static void main(String[] args) {
-        //iterateList();
-        //iterateMap();
-        //optionalAndNullableDemo();
+        iterateList();
+        iterateMap();
+        optionalAndNullableDemo();
         convertListOfObjectsToMap();
     }
 
+    // Different Ways to Iterate List
     private static void iterateList() {
         List<String> elements = new ArrayList<>();
         elements.add("element1");
@@ -56,6 +57,7 @@ public class DifferentMethodToIterateCollection {
                 .forEach(System.out::println);
     }
 
+    // Different Ways to Iterate Map
     private static void iterateMap() {
         Map<Integer,String> students = new HashMap<>();
         students.put(1,"Kishor");
