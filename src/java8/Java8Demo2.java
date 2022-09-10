@@ -11,6 +11,33 @@ public class Java8Demo2 {
         sortArrayOfPrimitiveTypesInDescendingOrder();
         concateStringUsingSeparator();
         countElementsOccurencesInArray();
+        mapVsFlatMap();
+    }
+
+    // map returns one value for each input element whereas flatMap returns zero or more values for each input element
+    private static void mapVsFlatMap() {
+        //map demo
+        System.out.println("----map demo----");
+        List<String> fruits = Arrays.asList("Mango","Orange","Banana","Watermelon");
+        System.out.println("List of fruits: "+fruits);
+        List<Integer> mapList = fruits.stream()
+                .map(fruit -> fruit.length())
+                .collect(Collectors.toList());
+        System.out.println("List generated after performing map operation: "+ mapList);
+
+        // flatMap demo
+        System.out.println("\n----flatMap demo----");
+        List<List<Integer>> numbers = new ArrayList<>();
+        numbers.add(Arrays.asList(1,2,3));
+        numbers.add(Arrays.asList(4,5));
+        numbers.add(Arrays.asList(6,7,8));
+        numbers.add(Arrays.asList(9,10));
+        System.out.println("List of numbers: "+ numbers);
+
+        List<Integer> flapMapList = numbers.stream()
+                .flatMap(number -> number.stream())
+                .collect(Collectors.toList());
+        System.out.println("List of numbers generated after performing flatMap operation: "+ flapMapList);
     }
 
     private static void convertPrimitiveArrayToList() {
@@ -18,8 +45,8 @@ public class Java8Demo2 {
 
         List<Integer> list = Arrays.stream(a).boxed().collect(Collectors.toList());
 
-        // 2nd approach is using IntStream with boxed
-        list = IntStream.of(a).boxed().collect(Collectors.toList());
+        // 2nd approach is to use IntStream with boxed
+        //list = IntStream.of(a).boxed().collect(Collectors.toList());
         System.out.println(list);
     }
 
