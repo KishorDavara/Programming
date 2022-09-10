@@ -59,4 +59,15 @@ public class Java8Demo2 {
                 ));
         System.out.println(wordCount);
     }
+
+    /* Collectors.groupingBy example:
+    The following will classify Person objects by city:
+    Map<String, List<Person>> peopleByCity
+            = personStream.collect(Collectors.groupingBy(Person::getCity));
+
+    The following will classify Person objects by state and city, cascading two Collectors together:
+    Map<String, Map<String, List<Person>>> peopleByStateAndCity
+            = personStream.collect(Collectors.groupingBy(Person::getState,
+            Collectors.groupingBy(Person::getCity)));
+    */
 }
