@@ -5,6 +5,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+//https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
 public class Java8Demo2 {
     public static void main(String[] args) {
         convertPrimitiveArrayToList();
