@@ -1,30 +1,46 @@
 package binarysearch;
 
-import java.util.Arrays;
 
+// https://leetcode.com/problems/search-a-2d-matrix/description/
 public class SearchInSortedMatrix {
     public static void main(String[] args) {
-        int [][] matrix = {
-                {10,20,30,40},
-                {15,25,35,45},
-                {28,29,37,49},
-                {33,34,38,50}
-        };
-        System.out.println(Arrays.toString(searchInMatrix(matrix,34)));
+        int[][] matrix = {
+                    {1, 3, 5, 7},
+                    {10, 11, 16, 20},
+                    {23, 30, 34, 60}
+                  };
+        int target = 16;
+        System.out.println(searchInMatrix(matrix,target));
     }
 
-    public static int[] searchInMatrix(int [][] matrix , int target) {
-        int row = 0;
-        int column = matrix[0].length - 1;
-        while(row < matrix.length && column >= 0) {
-            if(matrix[row][column] == target) {
-                return new int[]{row,column};
-            } else if(matrix[row][column] > target) {
-                column--;
+    private static boolean searchInMatrix(int [][] matrix, int target) {
+      if(matrix.length == 0) {
+          throw new IllegalArgumentException("Matrix is empty.");
+      }
+      int col = matrix[0].length - 1;
+        for(int row = 0; row < matrix.length; row++) {
+          if(matrix[row][0] == target || matrix[row][col] == target) {
+              return true;
+          } else if(matrix[row][0] < target && matrix[row][col] > target) {
+              return binarySearch(matrix,row,target);
+          }
+      }
+        return false;
+    }
+
+    private static boolean binarySearch(int [][] matrix, int row, int target) {
+        int start = 1;
+        int end = matrix[row].length - 2;
+        while(start <= end) {
+            int mid = start + (end - start) / 2;
+            if(matrix[row][mid] == target) {
+                return true;
+            } else if(matrix[row][mid] < target) {
+                start = mid + 1;
             } else {
-                row++;
+                end = mid - 1;
             }
         }
-        return new int[]{-1,-1};
+        return false;
     }
 }
