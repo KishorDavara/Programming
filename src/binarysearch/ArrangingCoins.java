@@ -5,6 +5,9 @@ public class ArrangingCoins {
         System.out.println(arrangeCoins_Iterative(5));
         System.out.println(arrangeCoins_Iterative(8));
         System.out.println(arrangeCoins_Iterative(1));
+        System.out.println(arrangeCoins_binarySearch(5));
+        System.out.println(arrangeCoins_binarySearch(8));
+        System.out.println(arrangeCoins_binarySearch(1));
     }
 
     //Time Complexity: O(sqrt(N))
@@ -19,5 +22,23 @@ public class ArrangingCoins {
             row++;
         }
         return count;
+    }
+
+    //credit: https://leetcode.com/problems/arranging-coins/solutions/551419/arranging-coins/
+    private static int arrangeCoins_binarySearch(int n) {
+        long left = 0, right = n, mid , k;
+        while(left <= right) {
+            mid = left + (right - left) / 2;
+            k = mid * (mid + 1) / 2;
+            if(k == n) {
+                return (int)mid;
+            }
+            if(n < k) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return (int)right;
     }
 }
