@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+// https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
+//Asked in: Amazon
 public class TwoSumSortedArray {
     public static void main(String[] args) {
         int[] numbers = {2, 3, 4};
@@ -41,7 +43,7 @@ public class TwoSumSortedArray {
     private static int binarySearch(int[] nums, int left, int target) {
         int right = nums.length - 1;
         while (left <= right) {
-            int mid = (right + left) >> 1;
+            int mid = left + (right - left) / 2;
             if (nums[mid] == target) {
                 return mid;
             } else if (nums[mid] < target) {
